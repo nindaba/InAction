@@ -1,0 +1,14 @@
+topic:
+  name: Transactions
+  partitions: 3
+  replicas: 3
+spring:
+  application:
+    name: In-action-producer
+  kafka:
+    bootstrap-servers: 10.33.121.90:9090
+    properties:
+      schema.registry.url: http://10.33.121.3:8081
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
