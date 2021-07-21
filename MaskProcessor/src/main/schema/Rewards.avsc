@@ -1,11 +1,11 @@
 {
-  "namespace": "com.yadlings.avro",
+  "namespace": "com.yadlings.streamprocessor.avro",
   "name": "Rewards",
   "type": "record",
   "fields": [
     {"name": "customerId","type": "long","default": 0},
     {"name": "currentPoints","type": "double","default": 0},
-    {"name": "total","type": "double","default": 0},
-    {"name": "lastTransactionDate","type": "string",",default": ""}
+    {"name": "total","type": "double","default": 0.0},
+    {"name": "timePurchase","type": "long",",default": 0}
   ]
 }

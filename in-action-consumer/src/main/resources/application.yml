@@ -1,0 +1,13 @@
+
+topic:
+  name: stockVolume_0_0_0
+  group-id: 1
+spring:
+  kafka:
+    bootstrap-servers: 10.33.121.90:9090
+    properties:
+      schema.registry.url: http://10.33.121.3:8081
+    consumer:
+#      auto-offset-reset: earliest
+      key-Deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer

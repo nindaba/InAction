@@ -1,0 +1,39 @@
+{
+  "namespace": "com.yadlings.avro",
+  "name": "Top",
+  "type": "record",
+  "fields": [
+    {
+      "name": "top",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "topShares",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "StockVolume",
+          "type": "record",
+          "fields": [
+            {
+              "name": "symbol",
+              "type": "string",
+              "default": ""
+            },
+            {
+              "name": "industry",
+              "type": "string",
+              "default": ""
+            },
+            {
+              "name": "shares",
+              "type": "int",
+              "default": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

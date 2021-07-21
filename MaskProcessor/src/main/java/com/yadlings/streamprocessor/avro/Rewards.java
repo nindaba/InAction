@@ -15,7 +15,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Rewards extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 5882221785576923995L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Rewards\",\"namespace\":\"com.yadlings.streamprocessor.avro\",\"fields\":[{\"name\":\"customerId\",\"type\":\"long\",\"default\":0},{\"name\":\"currentPoints\",\"type\":\"double\",\"default\":0},{\"name\":\"total\",\"type\":\"double\",\"default\":0},{\"name\":\"timePurchase\",\"type\":\"long\",\",default\":0}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Rewards\",\"namespace\":\"com.yadlings.streamprocessor.avro\",\"fields\":[{\"name\":\"customerId\",\"type\":\"long\",\"default\":0},{\"name\":\"currentPoints\",\"type\":\"double\",\"default\":0},{\"name\":\"total\",\"type\":\"double\",\"default\":0.0},{\"name\":\"timePurchase\",\"type\":\"long\",\",default\":0}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();

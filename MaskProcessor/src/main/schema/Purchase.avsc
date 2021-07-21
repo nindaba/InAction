@@ -1,5 +1,5 @@
 {
-  "namespace": "com.yadlings.avro",
+  "namespace": "com.yadlings.streamprocessor.avro",
   "name": "Purchase",
   "type": "record",
   "fields": [
@@ -9,6 +9,6 @@
     {"name": "employeeId","type": "long","default": 0},
     {"name": "storeId","type": "long",",default": 0},
     {"name": "total","type": "double","default": 0},
-    {"name": "transactionDate","type": "string",",default": 0}
+    {"name": "timePurchase","type": "long",",default": 0}
   ]
 }

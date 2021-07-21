@@ -5,17 +5,16 @@
  */
 package com.yadlings.streamprocessor.avro;
 
-import org.apache.avro.generic.GenericArray;
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.SchemaStore;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
-import org.apache.avro.message.BinaryMessageEncoder;
-import org.apache.avro.message.BinaryMessageDecoder;
-import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Purchase extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 488692780849301437L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Purchase\",\"namespace\":\"com.yadlings.streamprocessor.avro\",\"fields\":[{\"name\":\"purchaseId\",\"type\":\"long\",\"default\":0},{\"name\":\"customerId\",\"type\":\"long\",\"default\":0},{\"name\":\"card\",\"type\":\"string\",\"default\":\"\"},{\"name\":\"employeeId\",\"type\":\"long\",\"default\":0},{\"name\":\"storeId\",\"type\":\"long\",\",default\":0},{\"name\":\"total\",\"type\":\"double\",\"default\":0},{\"name\":\"timePurchase\",\"type\":\"long\",\",default\":0}]}");
+  private static final long serialVersionUID = -8971260898665652306L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Purchase\",\"namespace\":\"com.yadlings.streamprocessor.avro\",\"fields\":[{\"name\":\"transactionId\",\"type\":\"long\",\"default\":0},{\"name\":\"customerId\",\"type\":\"long\",\"default\":0},{\"name\":\"card\",\"type\":\"string\",\"default\":\"\"},{\"name\":\"employeeId\",\"type\":\"long\",\"default\":0},{\"name\":\"storeId\",\"type\":\"long\",\",default\":0},{\"name\":\"total\",\"type\":\"double\",\"default\":0},{\"name\":\"timePurchase\",\"type\":\"long\",\",default\":0}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -71,9 +70,9 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
     return DECODER.decode(b);
   }
 
-   private long purchaseId;
+   private long transactionId;
    private long customerId;
-   private java.lang.CharSequence card;
+   private CharSequence card;
    private long employeeId;
    private long storeId;
    private double total;
@@ -88,7 +87,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
-   * @param purchaseId The new value for purchaseId
+   * @param transactionId The new value for transactionId
    * @param customerId The new value for customerId
    * @param card The new value for card
    * @param employeeId The new value for employeeId
@@ -96,8 +95,8 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * @param total The new value for total
    * @param timePurchase The new value for timePurchase
    */
-  public Purchase(java.lang.Long purchaseId, java.lang.Long customerId, java.lang.CharSequence card, java.lang.Long employeeId, java.lang.Long storeId, java.lang.Double total, java.lang.Long timePurchase) {
-    this.purchaseId = purchaseId;
+  public Purchase(Long transactionId, Long customerId, CharSequence card, Long employeeId, Long storeId, Double total, Long timePurchase) {
+    this.transactionId = transactionId;
     this.customerId = customerId;
     this.card = card;
     this.employeeId = employeeId;
@@ -106,12 +105,12 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
     this.timePurchase = timePurchase;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+  public SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
-  public java.lang.Object get(int field$) {
+  public Object get(int field$) {
     switch (field$) {
-    case 0: return purchaseId;
+    case 0: return transactionId;
     case 1: return customerId;
     case 2: return card;
     case 3: return employeeId;
@@ -124,34 +123,34 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
-  public void put(int field$, java.lang.Object value$) {
+  public void put(int field$, Object value$) {
     switch (field$) {
-    case 0: purchaseId = (java.lang.Long)value$; break;
-    case 1: customerId = (java.lang.Long)value$; break;
-    case 2: card = (java.lang.CharSequence)value$; break;
-    case 3: employeeId = (java.lang.Long)value$; break;
-    case 4: storeId = (java.lang.Long)value$; break;
-    case 5: total = (java.lang.Double)value$; break;
-    case 6: timePurchase = (java.lang.Long)value$; break;
+    case 0: transactionId = (Long)value$; break;
+    case 1: customerId = (Long)value$; break;
+    case 2: card = (CharSequence)value$; break;
+    case 3: employeeId = (Long)value$; break;
+    case 4: storeId = (Long)value$; break;
+    case 5: total = (Double)value$; break;
+    case 6: timePurchase = (Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   /**
-   * Gets the value of the 'purchaseId' field.
-   * @return The value of the 'purchaseId' field.
+   * Gets the value of the 'transactionId' field.
+   * @return The value of the 'transactionId' field.
    */
-  public long getPurchaseId() {
-    return purchaseId;
+  public long getTransactionId() {
+    return transactionId;
   }
 
 
   /**
-   * Sets the value of the 'purchaseId' field.
+   * Sets the value of the 'transactionId' field.
    * @param value the value to set.
    */
-  public void setPurchaseId(long value) {
-    this.purchaseId = value;
+  public void setTransactionId(long value) {
+    this.transactionId = value;
   }
 
   /**
@@ -175,7 +174,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'card' field.
    * @return The value of the 'card' field.
    */
-  public java.lang.CharSequence getCard() {
+  public CharSequence getCard() {
     return card;
   }
 
@@ -184,7 +183,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'card' field.
    * @param value the value to set.
    */
-  public void setCard(java.lang.CharSequence value) {
+  public void setCard(CharSequence value) {
     this.card = value;
   }
 
@@ -260,8 +259,8 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new Purchase RecordBuilder.
    * @return A new Purchase RecordBuilder
    */
-  public static com.yadlings.streamprocessor.avro.Purchase.Builder newBuilder() {
-    return new com.yadlings.streamprocessor.avro.Purchase.Builder();
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   /**
@@ -269,11 +268,11 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new Purchase RecordBuilder
    */
-  public static com.yadlings.streamprocessor.avro.Purchase.Builder newBuilder(com.yadlings.streamprocessor.avro.Purchase.Builder other) {
+  public static Builder newBuilder(Builder other) {
     if (other == null) {
-      return new com.yadlings.streamprocessor.avro.Purchase.Builder();
+      return new Builder();
     } else {
-      return new com.yadlings.streamprocessor.avro.Purchase.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -282,11 +281,11 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new Purchase RecordBuilder
    */
-  public static com.yadlings.streamprocessor.avro.Purchase.Builder newBuilder(com.yadlings.streamprocessor.avro.Purchase other) {
+  public static Builder newBuilder(Purchase other) {
     if (other == null) {
-      return new com.yadlings.streamprocessor.avro.Purchase.Builder();
+      return new Builder();
     } else {
-      return new com.yadlings.streamprocessor.avro.Purchase.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -297,9 +296,9 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Purchase>
     implements org.apache.avro.data.RecordBuilder<Purchase> {
 
-    private long purchaseId;
+    private long transactionId;
     private long customerId;
-    private java.lang.CharSequence card;
+    private CharSequence card;
     private long employeeId;
     private long storeId;
     private double total;
@@ -314,10 +313,10 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.yadlings.streamprocessor.avro.Purchase.Builder other) {
+    private Builder(Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.purchaseId)) {
-        this.purchaseId = data().deepCopy(fields()[0].schema(), other.purchaseId);
+      if (isValidValue(fields()[0], other.transactionId)) {
+        this.transactionId = data().deepCopy(fields()[0].schema(), other.transactionId);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.customerId)) {
@@ -350,10 +349,10 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Purchase instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.yadlings.streamprocessor.avro.Purchase other) {
+    private Builder(Purchase other) {
       super(SCHEMA$);
-      if (isValidValue(fields()[0], other.purchaseId)) {
-        this.purchaseId = data().deepCopy(fields()[0].schema(), other.purchaseId);
+      if (isValidValue(fields()[0], other.transactionId)) {
+        this.transactionId = data().deepCopy(fields()[0].schema(), other.transactionId);
         fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.customerId)) {
@@ -383,40 +382,40 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
-      * Gets the value of the 'purchaseId' field.
+      * Gets the value of the 'transactionId' field.
       * @return The value.
       */
-    public long getPurchaseId() {
-      return purchaseId;
+    public long getTransactionId() {
+      return transactionId;
     }
 
 
     /**
-      * Sets the value of the 'purchaseId' field.
-      * @param value The value of 'purchaseId'.
+      * Sets the value of the 'transactionId' field.
+      * @param value The value of 'transactionId'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setPurchaseId(long value) {
+    public Builder setTransactionId(long value) {
       validate(fields()[0], value);
-      this.purchaseId = value;
+      this.transactionId = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'purchaseId' field has been set.
-      * @return True if the 'purchaseId' field has been set, false otherwise.
+      * Checks whether the 'transactionId' field has been set.
+      * @return True if the 'transactionId' field has been set, false otherwise.
       */
-    public boolean hasPurchaseId() {
+    public boolean hasTransactionId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'purchaseId' field.
+      * Clears the value of the 'transactionId' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearPurchaseId() {
+    public Builder clearTransactionId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -435,7 +434,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'customerId'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setCustomerId(long value) {
+    public Builder setCustomerId(long value) {
       validate(fields()[1], value);
       this.customerId = value;
       fieldSetFlags()[1] = true;
@@ -455,7 +454,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'customerId' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearCustomerId() {
+    public Builder clearCustomerId() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -464,7 +463,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'card' field.
       * @return The value.
       */
-    public java.lang.CharSequence getCard() {
+    public CharSequence getCard() {
       return card;
     }
 
@@ -474,7 +473,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'card'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setCard(java.lang.CharSequence value) {
+    public Builder setCard(CharSequence value) {
       validate(fields()[2], value);
       this.card = value;
       fieldSetFlags()[2] = true;
@@ -494,7 +493,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'card' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearCard() {
+    public Builder clearCard() {
       card = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -514,7 +513,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'employeeId'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setEmployeeId(long value) {
+    public Builder setEmployeeId(long value) {
       validate(fields()[3], value);
       this.employeeId = value;
       fieldSetFlags()[3] = true;
@@ -534,7 +533,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'employeeId' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearEmployeeId() {
+    public Builder clearEmployeeId() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -553,7 +552,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'storeId'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setStoreId(long value) {
+    public Builder setStoreId(long value) {
       validate(fields()[4], value);
       this.storeId = value;
       fieldSetFlags()[4] = true;
@@ -573,7 +572,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'storeId' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearStoreId() {
+    public Builder clearStoreId() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -592,7 +591,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'total'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setTotal(double value) {
+    public Builder setTotal(double value) {
       validate(fields()[5], value);
       this.total = value;
       fieldSetFlags()[5] = true;
@@ -612,7 +611,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'total' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearTotal() {
+    public Builder clearTotal() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -631,7 +630,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'timePurchase'.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder setTimePurchase(long value) {
+    public Builder setTimePurchase(long value) {
       validate(fields()[6], value);
       this.timePurchase = value;
       fieldSetFlags()[6] = true;
@@ -651,7 +650,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'timePurchase' field.
       * @return This builder.
       */
-    public com.yadlings.streamprocessor.avro.Purchase.Builder clearTimePurchase() {
+    public Builder clearTimePurchase() {
       fieldSetFlags()[6] = false;
       return this;
     }
@@ -661,17 +660,17 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
     public Purchase build() {
       try {
         Purchase record = new Purchase();
-        record.purchaseId = fieldSetFlags()[0] ? this.purchaseId : (java.lang.Long) defaultValue(fields()[0]);
-        record.customerId = fieldSetFlags()[1] ? this.customerId : (java.lang.Long) defaultValue(fields()[1]);
-        record.card = fieldSetFlags()[2] ? this.card : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.employeeId = fieldSetFlags()[3] ? this.employeeId : (java.lang.Long) defaultValue(fields()[3]);
-        record.storeId = fieldSetFlags()[4] ? this.storeId : (java.lang.Long) defaultValue(fields()[4]);
-        record.total = fieldSetFlags()[5] ? this.total : (java.lang.Double) defaultValue(fields()[5]);
-        record.timePurchase = fieldSetFlags()[6] ? this.timePurchase : (java.lang.Long) defaultValue(fields()[6]);
+        record.transactionId = fieldSetFlags()[0] ? this.transactionId : (Long) defaultValue(fields()[0]);
+        record.customerId = fieldSetFlags()[1] ? this.customerId : (Long) defaultValue(fields()[1]);
+        record.card = fieldSetFlags()[2] ? this.card : (CharSequence) defaultValue(fields()[2]);
+        record.employeeId = fieldSetFlags()[3] ? this.employeeId : (Long) defaultValue(fields()[3]);
+        record.storeId = fieldSetFlags()[4] ? this.storeId : (Long) defaultValue(fields()[4]);
+        record.total = fieldSetFlags()[5] ? this.total : (Double) defaultValue(fields()[5]);
+        record.timePurchase = fieldSetFlags()[6] ? this.timePurchase : (Long) defaultValue(fields()[6]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
-      } catch (java.lang.Exception e) {
+      } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
@@ -700,7 +699,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeLong(this.purchaseId);
+    out.writeLong(this.transactionId);
 
     out.writeLong(this.customerId);
 
@@ -721,7 +720,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.purchaseId = in.readLong();
+      this.transactionId = in.readLong();
 
       this.customerId = in.readLong();
 
@@ -739,7 +738,7 @@ public class Purchase extends org.apache.avro.specific.SpecificRecordBase implem
       for (int i = 0; i < 7; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.purchaseId = in.readLong();
+          this.transactionId = in.readLong();
           break;
 
         case 1:

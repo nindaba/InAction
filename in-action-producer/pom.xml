@@ -7,7 +7,8 @@
 			<id>io.confluent</id>
 			<name>kafka</name>
 			<url>https://packages.confluent.io/maven/</url>
-		</repository></repositories>
+		</repository>
+	</repositories>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

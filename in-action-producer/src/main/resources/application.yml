@@ -1,5 +1,7 @@
+server:
+  port: 8081
 topic:
-  name: Transactions
+  name: StockTransactions_0_0_0
   partitions: 3
   replicas: 3
 spring:
@@ -8,7 +10,7 @@ spring:
   kafka:
     bootstrap-servers: 10.33.121.90:9090
     properties:
-      schema.registry.url: http://10.33.121.3:8081
+      schema.registry.url: http://10.33.121.148:8081
     producer:
-      key-serializer: org.apache.kafka.common.serialization.LongSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
