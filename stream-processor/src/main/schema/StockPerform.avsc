@@ -1,0 +1,48 @@
+{
+  "namespace": "com.yadlings.avro",
+  "name": "StockPerformance",
+  "type": "record",
+  "fields": [
+    {
+      "name": "lastTimeUpdate",
+      "type": "long",
+      "default": 0
+    },
+    {
+      "name": "MAX_LOCK_BACK",
+      "type": "int",
+      "default": 20
+    },
+    {
+      "name": "currentPrice",
+      "type": "double",
+      "default": 0.0
+    },
+    {
+      "name": "priceDifferential",
+      "type": "double",
+      "default": 0.0
+    },
+    {
+      "name": "shareDifferential",
+      "type": "double",
+      "default": 0.0
+    },
+    {
+      "name": "currentVolume",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "currentAveragePrice",
+      "type": "double",
+      "default": 0.0
+    },
+    {
+      "name": "currentAverageVolume",
+      "type": "double",
+      "default": 0.0
+    }
+
+  ]
+}

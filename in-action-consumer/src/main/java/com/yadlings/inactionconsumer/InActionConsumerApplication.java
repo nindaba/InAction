@@ -18,7 +18,7 @@ public class InActionConsumerApplication {
 		SpringApplication.run(InActionConsumerApplication.class, args);
 	}
 	@KafkaListener(topics = "${topic.name}",groupId = "${topic.group-id}")
-	private void Mask(ConsumerRecord<String, StockVolume> consumerRecord){
+	private void Mask(ConsumerRecord<String, String> consumerRecord){
 		log.info("Recieved {} ",consumerRecord.value());
 	}
 	//@KafkaListener(topics = "${topic.storeone}",groupId = "${topic.store-one-group}")

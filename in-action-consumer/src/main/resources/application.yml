@@ -1,6 +1,6 @@
 
 topic:
-  name: stockVolume_0_0_0
+  name: upper
   group-id: 1
 spring:
   kafka:
@@ -10,4 +10,5 @@ spring:
     consumer:
 #      auto-offset-reset: earliest
       key-Deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-Deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer

@@ -1,5 +1,6 @@
 package com.yadlings.inactionproducer;
 
+import com.yadlings.Domain.User;
 import com.yadlings.avro.StockTransaction;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -15,20 +16,28 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.UUID;
 
 
 @Service
 @EnableKafka
 @Log4j2
 public class ProducerService {
-    @Bean
-    public void send() {
+
+    public void send1() {
         Arrays.asList(
                 new StockTransaction("A","B",100,"1","8",40.0,new Date().getTime(),true),
                 new StockTransaction("B","A",50,"15","2",10.0,new Date().getTime(),true),
                 new StockTransaction("C","C",100,"41","1",45.0,new Date().getTime(),true),
                 new StockTransaction("D","C",70,"21","12",3.5,new Date().getTime(),true),
-                new StockTransaction("A","A",40,"11","B",25.21,new Date().getTime(),true),
+                new StockTransaction("Z","A",4500,"11","B",25.21,new Date().getTime(),true),
+                new StockTransaction("Z","B",5300,"11","B",25.21,new Date().getTime(),true),
+                new StockTransaction("C","B",30,"1","2",0.9,new Date().getTime(),true),
+                new StockTransaction("A","B",100,"1","8",40.0,new Date().getTime(),true),
+                new StockTransaction("B","A",50,"15","2",10.0,new Date().getTime(),true),
+                new StockTransaction("C","C",100,"41","1",45.0,new Date().getTime(),true),
+                new StockTransaction("D","C",70,"21","12",3.5,new Date().getTime(),true),
+                new StockTransaction("Z","C",5200,"11","B",25.21,new Date().getTime(),true),
                 new StockTransaction("C","B",30,"1","2",0.9,new Date().getTime(),true),
                 new StockTransaction("C","B",100,"12","2",4.5,new Date().getTime(),true)
 //              new Purchase( new Long(1),new Long(1),"3467-4787-6534-8745",new Long(15),new Long(1),new Double(120), new Date().getTime())  ,
@@ -47,7 +56,29 @@ public class ProducerService {
     private short replicas;
     @Autowired
     private KafkaTemplate kafkaTemplate;
+    public void send(){
+        Arrays.asList(
+                new User(UUID.randomUUID().toString(),"A","A@r.io","Admin"),
+                new User(UUID.randomUUID().toString(),"B","F@r.io","Local"),
+                new User(UUID.randomUUID().toString(),"C","D@r.io","Local"),
+                new User(UUID.randomUUID().toString(),"B","T@r.io","Admin"),
+                new User(UUID.randomUUID().toString(),"A","C@r.io","Admin")
+        ).forEach(this::send);
+    }
+    public void send(User user){
+        var record = new ProducerRecord<String, User>(topic,user.getId(),user);
+        kafkaTemplate.send(record).addCallback(new ListenableFutureCallback() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                log.error("The Purchase could not be written due {}",throwable);
+            }
 
+            @Override
+            public void onSuccess(Object o) {
+                log.info("Successfully written {}",o);
+            }
+        });
+    }
     private void send(StockTransaction purchase){
         var record = new ProducerRecord<CharSequence,StockTransaction>(topic,purchase.getIndustry().toString(),purchase);
         kafkaTemplate.send(record).addCallback(new ListenableFutureCallback() {

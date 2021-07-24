@@ -1,0 +1,27 @@
+{
+  "namespace": "com.yadlings.avro",
+  "name": "SymbolShares",
+  "type": "record",
+  "fields": [
+    {
+      "name": "symbol",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "total",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "numberOfSymbols",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "average",
+      "type": "int",
+      "default": 0
+    }
+  ]
+}
