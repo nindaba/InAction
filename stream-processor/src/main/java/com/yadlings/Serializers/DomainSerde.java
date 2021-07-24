@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 
 public interface DomainSerde {
     static JsonSerde<User> userSerde(){
-        return new JsonSerde(new JsonSerializer<User>(), new JsonDeserializer<User>(User.class));
+        return new JsonSerde(new JsonSerializer<User>(), new JsonDeserializer<User>());
     }
     static JsonSerde<User> userCountSerde(){
-        return new JsonSerde(new JsonSerializer<UserCount>(), new JsonDeserializer<UserCount>(UserCount.class));
+        return new JsonSerde(new JsonSerializer<UserCount>(), new JsonDeserializer<UserCount>());
     }
 }
