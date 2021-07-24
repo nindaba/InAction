@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8085
 topic:
   name: RegisteringUsers_0_0_0
   partitions: 3
