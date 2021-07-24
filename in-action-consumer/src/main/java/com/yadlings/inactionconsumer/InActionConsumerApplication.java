@@ -1,5 +1,6 @@
 package com.yadlings.inactionconsumer;
 
+import com.yadlings.Domain.User;
 import com.yadlings.avro.Purchase;
 import com.yadlings.avro.StockVolume;
 import lombok.extern.log4j.Log4j2;
@@ -18,7 +19,7 @@ public class InActionConsumerApplication {
 		SpringApplication.run(InActionConsumerApplication.class, args);
 	}
 	@KafkaListener(topics = "${topic.name}",groupId = "${topic.group-id}")
-	private void Mask(ConsumerRecord<String, String> consumerRecord){
+	private void Mask(ConsumerRecord<String, User> consumerRecord){
 		log.info("Recieved {} ",consumerRecord.value());
 	}
 	//@KafkaListener(topics = "${topic.storeone}",groupId = "${topic.store-one-group}")

@@ -13,4 +13,4 @@ spring:
       schema.registry.url: http://10.33.121.148:8081
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.yadlings.Serializers.ProducerSerializer
+      value-serializer: com.yadlings.Serializers.JsonSerializer

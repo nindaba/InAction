@@ -1,6 +1,6 @@
 
 topic:
-  name: upper
+  name: RegisteringUsers_0_0_0
   group-id: 1
 spring:
   kafka:
@@ -10,5 +10,5 @@ spring:
     consumer:
 #      auto-offset-reset: earliest
       key-Deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-Deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-Deserializer: com.yadlings.Serializers.UserDeserializer
 #      value-Deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
