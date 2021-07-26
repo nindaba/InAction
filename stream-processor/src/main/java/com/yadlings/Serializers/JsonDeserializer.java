@@ -6,8 +6,12 @@ import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Deserializer;
 
 import java.util.Map;
-@NoArgsConstructor
 public class JsonDeserializer<T> implements Deserializer<T>{
+    private final Class<T> desClass;
+
+    public JsonDeserializer(Class<T> tClass){
+        this.desClass = tClass;
+    }
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
         Deserializer.super.configure(configs, isKey);
@@ -15,7 +19,7 @@ public class JsonDeserializer<T> implements Deserializer<T>{
 
     @Override
     public T deserialize(String s, byte[] bytes) {
-        return new Gson().fromJson(new String(bytes),getClass().getTypeParameters()[0]);
+        return new Gson().fromJson(new String(bytes),desClass);
     }
     @Override
     public void close() {

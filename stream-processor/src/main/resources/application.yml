@@ -22,13 +22,14 @@ stockTopics:
   stockDelta: StockToDisplay_0_0_0
 topologyTopics:
   upper: upper
+  upper1: upper1
   lower: lower
-  deltaState: DeltaState_0_0_0
 userTopics:
   registered: RegisteringUsers_0_0_0
   user_admin: Adminusers_0_0_0
   user_local: LocalUsers_0_0_0
   user_count: UserCount_0_0_0
+  countState: CountState_0_0_4
 spring:
   application:
     name: stream-prcessor14

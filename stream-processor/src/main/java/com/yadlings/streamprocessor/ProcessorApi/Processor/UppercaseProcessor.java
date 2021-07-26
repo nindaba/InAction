@@ -6,6 +6,12 @@ import org.apache.kafka.streams.processor.AbstractProcessor;
 public class UppercaseProcessor extends AbstractProcessor<String,String> {
     @Override
     public void process(String s, String s2) {
-        context().forward(s,s2.toUpperCase());
+        if (s2.equals("yes")) {
+            context().forward(s,s2.toUpperCase(),"saveUpperCase");
+        }
+        else{
+            System.out.println("no");
+            context().forward(s,s2.toUpperCase(),"saveUpperCase1");
+        }
     }
 }

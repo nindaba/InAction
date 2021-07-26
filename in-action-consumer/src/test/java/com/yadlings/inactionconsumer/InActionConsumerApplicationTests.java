@@ -22,7 +22,8 @@ class InActionConsumerApplicationTests {
 	}
 	public class A<T>{
 		public void print(T x,Class<T> c){
-			log.info("Message {} Type {}" ,x, this.getClass());
+
+			log.info("Message {} Type {}" ,x, (ParameterizedType)getClass().getGenericSuperclass());
 		}
 	}
 	@Test

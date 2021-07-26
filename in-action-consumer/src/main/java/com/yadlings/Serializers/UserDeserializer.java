@@ -1,6 +1,7 @@
 package com.yadlings.Serializers;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yadlings.Domain.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,12 +13,10 @@ import javax.ws.rs.core.GenericType;
 import java.lang.reflect.Type;
 import java.util.Map;
 //@AllArgsConstructor
-
 @NoArgsConstructor
 @Log4j2
 public class UserDeserializer<T> implements Deserializer<T> {
-    private static final Type T = null;
-
+    private Gson gson;
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
         Deserializer.super.configure(configs, isKey);
@@ -25,7 +24,7 @@ public class UserDeserializer<T> implements Deserializer<T> {
 
     @Override
     public T deserialize(String s, byte[] bytes) {
-        return bytes!= null ? new Gson().fromJson(new String(bytes),T):null;
+        return bytes!= null ? gson.fromJson(new String(bytes),getClass().getTypeParameters()[0]):null;
     }
     @Override
     public void close() {
