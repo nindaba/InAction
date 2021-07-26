@@ -1,0 +1,14 @@
+server:
+  port: 8082
+topic:
+  main: Transactions
+  maskTopic: MaskedTransactions
+  partitions: 3
+  replicas: 3
+  schema: http://10.33.121.3:8081
+spring:
+  application:
+    name: stream-prcessor1
+  kafka:
+    bootstrap-servers: 10.33.121.90:9090,10.33.121.90:9091,10.33.121.90:9092
+    schema.registry.url: http://10.33.121.3:8081
