@@ -15,6 +15,9 @@ public class UserGenerator {
     public static Random random = new Random();
     @Data
     public static class UserData{
+        public User getUser(){
+            return new User(random.nextInt(20)+11,randomString(),randomString(), randomRole(), Instant.now());
+        }
         public List<User> getUsers() {
             return
                     range(1,random.nextInt(10)+3).mapToObj(
