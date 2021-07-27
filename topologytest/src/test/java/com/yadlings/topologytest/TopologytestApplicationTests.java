@@ -16,7 +16,7 @@ class TopologytestApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	@Test
+//	@Test
 	void check(){
 		log.info(Instant.now().getLong(ChronoField.INSTANT_SECONDS));
 		log.info(Instant.now().getLong(ChronoField.NANO_OF_SECOND));
