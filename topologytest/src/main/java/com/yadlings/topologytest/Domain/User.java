@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +18,5 @@ public class User {
     private String name;
     private String pass;
     private Role role;
-    private Instant instant;
+    private Date created;
 }

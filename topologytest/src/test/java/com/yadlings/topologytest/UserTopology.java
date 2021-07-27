@@ -5,6 +5,7 @@ import com.yadlings.topologytest.Domain.User;
 import com.yadlings.topologytest.Serdes.SerDes;
 import com.yadlings.topologytest.Streams.UserStream;
 import com.yadlings.topologytest.Utils.PasswordEncryptor;
+import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsConfig;
@@ -22,6 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 //@SpringBootTest
+@Log4j2
 public class UserTopology {
     TopologyTestDriver topologyTestDriver;
     @BeforeEach
@@ -54,6 +56,12 @@ public class UserTopology {
                 SerDes.UserSerde().deserializer()
         );
         user.setPass(new PasswordEncryptor().encrypt(user.getPass()));
+        log.info(output.value());
         assertThat(output.value(),equalTo(user));
+    }
+    @Test
+    void createUser(){
+        User user = new UserGenerator.UserData().getUser();
+        log.info("USER {}",user);
     }
 }
