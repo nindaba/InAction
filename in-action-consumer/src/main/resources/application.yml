@@ -1,7 +1,7 @@
 
 topic:
-  name: RegisteringUsers_0_0_0
-  group-id: 1
+  name: UserCount_0_0_0
+  group-id: 2
 spring:
   kafka:
     bootstrap-servers: 10.33.121.90:9090

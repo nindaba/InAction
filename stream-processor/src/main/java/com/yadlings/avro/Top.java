@@ -12,7 +12,6 @@ import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 @org.apache.avro.specific.AvroGenerated
@@ -82,8 +81,7 @@ public class Top extends org.apache.avro.specific.SpecificRecordBase implements 
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Top() {
-  }
+  public Top() {}
 
   /**
    * All-args constructor.
@@ -150,20 +148,17 @@ public class Top extends org.apache.avro.specific.SpecificRecordBase implements 
     this.topShares = value;
   }
   public Top addTopShares(com.yadlings.avro.StockVolume value) {
-    Comparator<StockVolume> comparator = (share1, share2)->share1.getShares() - share2.getShares();
-    this.topShares.sort(comparator);
+    Comparator<com.yadlings.avro.StockVolume> comparator = (value1,value2) -> value2.getShares()-value1.getShares();
     this.topShares.add(value);
-    if(this.topShares.size() > this.top){
-      this.topShares.remove(this.top-1);
-    }
+    this.topShares.sort(comparator);
+    if (this.topShares.size()>this.top) this.topShares.remove(this.top);
     return this;
   }
   public Top removeTopShares(com.yadlings.avro.StockVolume value) {
     int index = this.topShares.indexOf(value);
-    if(index > -1) this.topShares.remove(index);
+    if(index>-1) this.topShares.remove(index);
     return this;
   }
-
   /**
    * Creates a new Top RecordBuilder.
    * @return A new Top RecordBuilder

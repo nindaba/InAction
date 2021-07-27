@@ -22,13 +22,14 @@ stockTopics:
   stockDelta: StockToDisplay_0_0_0
 topologyTopics:
   upper: upper
+  upper1: upper1
   lower: lower
-  deltaState: DeltaState_0_0_0
 userTopics:
   registered: RegisteringUsers_0_0_0
   user_admin: Adminusers_0_0_0
   user_local: LocalUsers_0_0_0
   user_count: UserCount_0_0_0
+  countState: CountState_0_0_9
 spring:
   application:
     name: stream-prcessor14
@@ -37,5 +38,6 @@ spring:
       properties:
         cache.max.bytes.buffering: 10485760
         commit.interval.ms: 10000
+#        metrics.recording.level: DEBUG
 #        default.timestamp.extractor: com.yadlings.streamprocessor.Stock.TimeStampExtractor
     bootstrap-servers: 10.33.121.90:9090,10.33.121.90:9091,10.33.121.90:9092
