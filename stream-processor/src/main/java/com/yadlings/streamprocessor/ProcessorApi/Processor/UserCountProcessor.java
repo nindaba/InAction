@@ -28,13 +28,10 @@ public class UserCountProcessor extends AbstractProcessor<String, User> {
     }
     @Override
     public void process(String s, User user) {
-        keyValueStore.u
         UserCount userCount = keyValueStore.get(user.getRole());
         if(userCount!=null) userCount.setCount(userCount.getCount()+1);
         else userCount = new UserCount(user.getRole(), 1);
-        keyValueStore.delete(userCount.getRole());
         keyValueStore.put(userCount.getRole(), userCount);
-        log.info("Counted {}",userCount);
 //        context().forward(userCount.getRole(), userCount,"addToCount");
     }
 }

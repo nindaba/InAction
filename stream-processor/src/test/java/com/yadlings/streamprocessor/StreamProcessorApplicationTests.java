@@ -18,5 +18,4 @@ class StreamProcessorApplicationTests {
 	void topic(@Value("${stockTopics.stockTransactions}") String to){
 		log.info("TOPIC {}",to);
 	}
-
 }

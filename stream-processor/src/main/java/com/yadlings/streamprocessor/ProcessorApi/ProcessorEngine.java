@@ -23,6 +23,8 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 
 @Component
 @EnableKafkaStreams
@@ -69,8 +71,10 @@ public class ProcessorEngine {
 
     @Autowired
     private Topology userProcess(StreamsBuilder builder){
+        Map<String, String> stateConfig = Map.of("retention.ms", "259200000", "cleanup.policy", "compact,delete");
         KeyValueBytesStoreSupplier storeSupplier = Stores.inMemoryKeyValueStore(userCounterState);
         StoreBuilder<KeyValueStore<String, UserCount>> storeBuilder = Stores.keyValueStoreBuilder(storeSupplier, Serdes.String(), DomainSerde.userCountSerde());
+        storeBuilder.withLoggingEnabled(stateConfig);
         return builder.build()
                 .addSource("receiveUsers",Serdes.String().deserializer(), DomainSerde.userSerde().deserializer(),userRegisterTopic)
                 .addProcessor("splitUsers", UserSplitter::new,"receiveUsers")

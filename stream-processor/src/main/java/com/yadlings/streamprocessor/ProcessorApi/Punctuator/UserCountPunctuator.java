@@ -18,6 +18,7 @@ public class UserCountPunctuator implements Punctuator{
     public void punctuate(long l) {
         KeyValueIterator<String, UserCount> all = keyValueStore.all();
         all.forEachRemaining(keyvalue->{
+            log.info("PUNCTUATE {}",keyvalue);
             context.forward(keyvalue.key,keyvalue.value,"addToCount");
 //            if(keyvalue.value.getCount()> 35
         });
