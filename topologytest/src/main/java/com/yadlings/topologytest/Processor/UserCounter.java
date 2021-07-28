@@ -27,7 +27,7 @@ public class UserCounter implements ValueTransformer<User, UserRoleCount> {
         UserRoleCount userRoleCount = store.get(user.getRole().toString());
         if(userRoleCount == null) userRoleCount = new UserRoleCount(user.getRole(),0);
         userRoleCount.setCount(userRoleCount.getCount()+1);
-        log.info("IS COUNT STORED {}",userRoleCount);
+        store.put(user.getRole().toString(),userRoleCount);
         return userRoleCount;
     }
 

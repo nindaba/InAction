@@ -28,7 +28,11 @@ public class UserStream {
     public StreamsBuilder builder(){
         StreamsBuilder streamsBuilder = new StreamsBuilder();
         KeyValueBytesStoreSupplier storeSupplier = Stores.inMemoryKeyValueStore(counterState);
-        StoreBuilder<KeyValueStore<String, UserRoleCount>> storeBuilder = Stores.keyValueStoreBuilder(storeSupplier, Serdes.String(), SerDes.UseCountSerde());
+        StoreBuilder<KeyValueStore<String, UserRoleCount>> storeBuilder = Stores.keyValueStoreBuilder(
+                storeSupplier,
+                Serdes.String(),
+                SerDes.UseCountSerde()
+        );
         storeBuilder.withLoggingEnabled(Map.of(
                 "retention.ms","259200000",
                 "cleanup.policy","compact,delete"
@@ -39,9 +43,19 @@ public class UserStream {
                 .mapValues(new EncryptPassword()::apply);
         secure
                 .to("SecuredUsers", Produced.with(Serdes.String(),SerDes.UserSerde()));
-        secure
-                .transformValues(()-> new UserCounter(counterState),counterState)
+        KStream<String, UserRoleCount> countKStream = secure
+                .transformValues(() -> new UserCounter(counterState), counterState);
+        countKStream
                 .to("UserCount", Produced.with(Serdes.String(),SerDes.UseCountSerde()));
+        countKStream
+                .groupByKey()
+                .reduce((countx,county)-> {
+                    if(countx.getCount()>county.getCount()) return countx;
+                    else return county;
+                })
+                .toStream()
+                .to("HigherCount", Produced.with(Serdes.String(),SerDes.UseCountSerde()));
+
         return streamsBuilder;
     }
 

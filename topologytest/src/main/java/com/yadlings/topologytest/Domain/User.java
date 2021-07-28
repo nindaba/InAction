@@ -19,4 +19,5 @@ public class User {
     private String pass;
     private Role role;
     private Date created;
+
 }
